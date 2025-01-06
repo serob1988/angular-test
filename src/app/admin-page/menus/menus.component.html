@@ -1,0 +1,66 @@
+<div class="abs">
+    <mat-form-field>
+        <mat-label>Title</mat-label>
+        <input matInput placeholder="Title" [(ngModel)]="menuDetails.title" #input>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>URL</mat-label>
+        <input matInput [(ngModel)]="menuDetails.url" placeholder="URL" #input>
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="addMenu()">Add</button>
+</div>
+
+
+  <mat-form-field class="filter">
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+  </mat-form-field>
+
+  
+  <table mat-table [dataSource]="dataSource" matSort class="example-container mat-elevation-z8">
+  
+    <!-- Position Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Title </th>
+      <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+    </ng-container>
+  
+    <!-- Weight Column -->
+    <ng-container matColumnDef="url">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> URL </th>
+      <td mat-cell *matCellDef="let element"> {{element.url}} </td>
+    </ng-container>
+
+        <!-- Weight Column -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
+      <td mat-cell *matCellDef="let element">
+      <button mat-icon-button aria-label="edit" color="primary" (click)="openEditDialog(element.id, element.title, element.url)">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button aria-label="delete" color="warn" (click)="openDialog(element.id)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </td>
+    </ng-container>
+
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  
+    <!-- Row shown when there is no matching data. -->
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+    </tr>
+
+  </table>
+  <mat-paginator             
+      [pageSizeOptions]="[5, 10, 20]"
+      showFirstLastButtons>
+</mat-paginator>

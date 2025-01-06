@@ -1,0 +1,22 @@
+<h2 mat-dialog-title>Edit</h2>
+<mat-dialog-content>
+    <mat-form-field>
+        <mat-label>Title</mat-label>
+        <input matInput placeholder="Title" [(ngModel)]="data.title" #input>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-select placeholder="Select Menu" [(ngModel)]="data.menu_id">
+            <mat-option *ngFor="let menu of data.menus" [value]="menu.id" >{{menu.title}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+
+    <mat-form-field>
+        <mat-label>Content</mat-label>
+        <textarea matInput [(ngModel)]="data.content" placeholder="Content" #input></textarea>
+    </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-raised-button [mat-dialog-close]="data">Yes</button>
+    <button mat-raised-button [mat-dialog-close]="false">Cancel</button>
+</mat-dialog-actions>
