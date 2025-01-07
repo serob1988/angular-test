@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, AfterViewInit, Inject } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { PostsService , Post} from '../../service/posts/posts.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
@@ -7,8 +7,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { ConfirmationDialogComponent } from '../shared/confirmation-dialog/confirmation-dialog.component';
 import { EditPostComponent } from './edit-post/edit-post.component';
 import { MenusService } from '../../service/menus/menus.service';
-import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { Title } from '@angular/platform-browser';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+
 
 
 

@@ -3,8 +3,7 @@
 
       <button mat-button routerLink="/">Angular CMS</button>
       <span class="example-spacer"></span>      
-      <!-- <button mat-button routerLink="/login">Login page</button> -->
-      <!-- <button mat-button routerLink="/article">Article page</button> -->
+
       <div *ngIf="!user">
         <button mat-button (click)="afService.loginWithGoogle()">Login</button>
       </div>

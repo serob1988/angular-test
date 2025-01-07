@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Menu, MenusService } from '../../service/menus/menus.service';
+import { MenusService } from '../../service/menus/menus.service';
 import { PostsService } from '../../service/posts/posts.service';
 
 @Component({
