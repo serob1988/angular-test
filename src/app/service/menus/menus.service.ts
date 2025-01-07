@@ -28,6 +28,18 @@ export class MenusService {
     );
   }
 
+  getConditionalMenus(field: string, condition: any, value: string): Observable<Menu[]> {
+    return this.afs.collection<Menu>("menus", ref => ref.where(field, condition, value)).snapshotChanges().pipe(
+      map((menus) =>
+        menus.map((a) => {
+          const data = a.payload.doc.data() as Menu;
+          const id = a.payload.doc.id;
+          return { id, ...data };
+        })
+      )
+    );
+  }
+
   addMenu(menu: Menu) {
     this.afs.collection("menus").add(menu);
   }

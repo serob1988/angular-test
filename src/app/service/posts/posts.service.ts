@@ -29,6 +29,18 @@ export class PostsService {
     );
   }
 
+  getConditionalPosts(field: string, condition: any, value: string): Observable<Post[]> {
+    return this.afs.collection<Post>("posts", ref => ref.where(field, condition, value)).snapshotChanges().pipe(
+      map((posts) =>
+        posts.map((a) => {
+          const data = a.payload.doc.data() as Post;
+          const id = a.payload.doc.id;
+          return { id, ...data };
+        })
+      )
+    );
+  }
+
   addPost(post: Post) {
     this.afs.collection("posts").add(post);
   }
